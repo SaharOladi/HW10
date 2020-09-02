@@ -8,7 +8,7 @@
     tools:context=".controller.fragment.MainActivityFragment">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextPersonName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -28,7 +28,7 @@
         android:id="@+id/editTextNumber"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/editTextTextPersonName"
+        android:layout_below="@+id/editTextPersonName"
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
