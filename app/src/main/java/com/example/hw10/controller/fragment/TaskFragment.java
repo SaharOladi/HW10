@@ -1,5 +1,6 @@
 package com.example.hw10.controller.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,16 +8,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.hw10.R;
+import com.example.hw10.controller.TaskState;
 
-import static com.example.hw10.controller.activity.TaskActivity.EXTRA_COUNT_TASK;
+
 import static com.example.hw10.controller.fragment.MainActivityFragment.EXTRA_NUMBER_TASK;
+import static com.example.hw10.controller.fragment.MainActivityFragment.EXTRA_TASK_NAME;
 
 
 public class TaskFragment extends Fragment {
@@ -49,6 +53,9 @@ public class TaskFragment extends Fragment {
 
     private void initViews() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        TaskAdapter taskAdapter = new TaskAdapter();
+        mRecyclerView.setAdapter(taskAdapter);
     }
 
     private void findViews(View view){
@@ -58,7 +65,7 @@ public class TaskFragment extends Fragment {
 
     private class TaskHolder extends RecyclerView.ViewHolder{
 
-        private EditText mTaskName;
+        private TextView mTaskName;
         private TextView mTaskState;
 
         public TaskHolder(@NonNull View itemView) {
@@ -72,22 +79,42 @@ public class TaskFragment extends Fragment {
 
     private class TaskAdapter extends RecyclerView.Adapter<TaskHolder>{
 
-        private int count = Integer.parseInt(getActivity().getIntent().getExtras().getString(EXTRA_COUNT_TASK));
-
-        @NonNull
-        @Override
-        public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return null;
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
-
-        }
+        private int count = Integer.parseInt(getActivity().getIntent().getExtras().getString(EXTRA_NUMBER_TASK));
+        private String name = getActivity().getIntent().getExtras().getString(EXTRA_TASK_NAME);
 
         @Override
         public int getItemCount() {
             return count;
         }
+
+        @NonNull
+        @Override
+        public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(getActivity()).
+                    inflate(R.layout.row_holder, parent, false);
+            TaskHolder taskHolder = new TaskHolder(view);
+            return taskHolder;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
+
+            String state = String.valueOf(selectRandom());
+
+            holder.mTaskName.setText(name);
+            holder.mTaskState.setText(state);
+            if(position%2==0){
+                holder.itemView.setBackgroundColor(Color.rgb(205,220, 57));
+            }else
+                holder.itemView.setBackgroundColor(Color.rgb(0,188, 212));
+
+
+        }
+
+        private TaskState selectRandom(){
+            return TaskState.values()[(int) (Math.random() * TaskState.values().length)];
+        }
+
+
     }
 }

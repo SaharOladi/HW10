@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/row_holder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp">
 
-    <EditText
+    <TextView
         android:id="@+id/row_task_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:ems="10"
         android:inputType="textPersonName"
-        android:padding="8dp"
         android:textColor="#050505"
-        android:textSize="14sp"
-        android:textStyle="normal"
+        android:textSize="18sp"
+        android:textStyle="bold"
         tools:text="TASKNAME" />
 
     <TextView
@@ -24,8 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:padding="8dp"
         android:textColor="#050505"
-        android:textStyle="bold"
+        android:textSize="14sp"
         tools:text="STATE" />
 </LinearLayout>

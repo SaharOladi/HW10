@@ -16,10 +16,10 @@ import com.example.hw10.controller.activity.TaskActivity;
 
 public class MainActivityFragment extends Fragment {
 
-    public static final String EXTRA_USER_NAME = "EXTRA_USER_NAME";
+    public static final String EXTRA_TASK_NAME = "EXTRA_USER_NAME";
     public static final String EXTRA_NUMBER_TASK = "EXTRA_NUMBER_TASK";
     private Button mCreateButton;
-    private EditText userName;
+    private EditText taskName;
     private EditText numberTask;
 
     public MainActivityFragment() {
@@ -60,14 +60,14 @@ public class MainActivityFragment extends Fragment {
 
     private void sendIntent(){
         Intent intent = new Intent(getActivity(), TaskActivity.class);
-        intent.putExtra(EXTRA_USER_NAME, userName.getText().toString());
+        intent.putExtra(EXTRA_TASK_NAME, taskName.getText().toString());
         intent.putExtra(EXTRA_NUMBER_TASK, numberTask.getText().toString());
         startActivity(intent);
     }
 
     private void findViews(View view){
         mCreateButton = view.findViewById(R.id.createButton);
-        userName = view.findViewById(R.id.editTextPersonName);
+        taskName = view.findViewById(R.id.editTextPersonName);
         numberTask = view.findViewById(R.id.editTextNumber);
     }
 }

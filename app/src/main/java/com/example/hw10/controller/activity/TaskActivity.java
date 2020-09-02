@@ -2,18 +2,17 @@ package com.example.hw10.controller.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.hw10.R;
 import com.example.hw10.controller.fragment.TaskFragment;
 
-import static com.example.hw10.controller.fragment.MainActivityFragment.EXTRA_NUMBER_TASK;
 
 public class TaskActivity extends AppCompatActivity {
 
 
-    public static final String EXTRA_COUNT_TASK = "EXTRA_COUNT_TASK";
+//    public static final String EXTRA_COUNT_TASK = "EXTRA_COUNT_TASK";
+//    public static final String EXTRA_NAME_TASK = "EXTRA_NAME_TASK";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +20,7 @@ public class TaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task);
 
 
-        sendIntent();
+//        sendIntent();
 
         TaskFragment taskFragment = new TaskFragment();
 
@@ -31,9 +30,12 @@ public class TaskActivity extends AppCompatActivity {
                 .commit();
     }
 
-    private void sendIntent() {
-        int count = Integer.parseInt(getIntent().getExtras().getString(EXTRA_NUMBER_TASK));
-        Intent intent = new Intent(TaskActivity.this, TaskFragment.class);
-        intent.putExtra(EXTRA_COUNT_TASK, count);
-    }
+//    private void sendIntent() {
+//        int count = Integer.parseInt(getIntent().getExtras().getString(EXTRA_NUMBER_TASK));
+//        String taskName = getIntent().getExtras().getString(EXTRA_TASK_NAME);
+//        Intent intent = new Intent(this, TaskFragment.class);
+//        intent.putExtra(EXTRA_COUNT_TASK, count);
+//        intent.putExtra(EXTRA_NAME_TASK,taskName);
+//        startActivity(intent);
+//    }
 }
